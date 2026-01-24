@@ -1,17 +1,24 @@
 // ---------------------
-// TICKER (live time with milliseconds)
+// TICKER (Day + Date + Time with milliseconds, MM/DD/YYYY format)
 // ---------------------
 const ticker = document.getElementById("time");
 
 function updateTicker() {
   const now = new Date();
 
+  const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const dayOfWeek = days[now.getDay()];
+
+  const month = String(now.getMonth() + 1).padStart(2, "0");
+  const day = String(now.getDate()).padStart(2, "0");
+  const year = now.getFullYear();
+
   const hours = String(now.getHours()).padStart(2, "0");
   const minutes = String(now.getMinutes()).padStart(2, "0");
   const seconds = String(now.getSeconds()).padStart(2, "0");
   const millis = String(now.getMilliseconds()).padStart(3, "0");
 
-  ticker.textContent = `${hours}:${minutes}:${seconds}:${millis}`;
+  ticker.textContent = `${dayOfWeek}, ${month}/${day}/${year} ${hours}:${minutes}:${seconds}:${millis}`;
 }
 
 // Update very frequently for smooth milliseconds display
@@ -19,6 +26,8 @@ setInterval(updateTicker, 10);
 
 // Initial update
 updateTicker();
+
+
 
 // ---------------------
 // IMAGE PREVIEWS
@@ -46,7 +55,9 @@ function hidePreview() {
   activeItem = null;
 }
 
-// DESKTOP hover and MOBILE tap
+// ---------------------
+// DESKTOP HOVER / MOBILE TAP
+// ---------------------
 workItems.forEach(item => {
   // DESKTOP hover
   item.addEventListener("mouseenter", () => {
@@ -65,13 +76,13 @@ workItems.forEach(item => {
   // MOBILE tap toggle
   item.addEventListener("click", e => {
     if (window.matchMedia("(hover: none)").matches) {
-      e.preventDefault(); // prevent navigation on first tap
+      e.preventDefault(); // first tap prevents navigation
 
       if (activeItem === item) {
-        hidePreview(); // close on second tap
+        hidePreview(); // second tap closes
       } else {
         activeItem = item;
-        showPreview(item); // open on first tap
+        showPreview(item); // first tap opens
       }
     }
   });
