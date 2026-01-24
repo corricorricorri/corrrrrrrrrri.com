@@ -23,6 +23,8 @@ setInterval(updateTicker, 10);
 const workItems = document.querySelectorAll(".work-item");
 const previewContainer = document.getElementById("preview-container");
 
+let activeItem = null;
+
 function showPreview(item) {
   previewContainer.innerHTML = "";
 
@@ -41,19 +43,34 @@ function showPreview(item) {
 function hidePreview() {
   previewContainer.style.display = "none";
   previewContainer.innerHTML = "";
+  activeItem = null;
 }
 
 workItems.forEach(item => {
+  // DESKTOP hover
   item.addEventListener("mouseenter", () => {
-    showPreview(item);
+    if (window.matchMedia("(hover: hover)").matches) {
+      showPreview(item);
+    }
   });
 
   item.addEventListener("mouseleave", () => {
-    hidePreview();
+    if (window.matchMedia("(hover: hover)").matches) {
+      hidePreview();
+    }
   });
 
-  // ✅ click now HIDES instead of shows
-  item.addEventListener("click", () => {
-    hidePreview();
+  // MOBILE tap
+  item.addEventListener("click", e => {
+    if (window.matchMedia("(hover: none)").matches) {
+      e.preventDefault(); // stop immediate navigation
+
+      if (activeItem === item) {
+        hidePreview();
+      } else {
+        activeItem = item;
+        showPreview(item);
+      }
+    }
   });
 });
