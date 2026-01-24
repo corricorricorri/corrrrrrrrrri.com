@@ -3,29 +3,26 @@
 // ---------------------
 const ticker = document.getElementById("time");
 
-function updateTicker() {
-  const now = new Date();
-
-  const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  const dayOfWeek = days[now.getDay()];
-
-  const day = String(now.getDate()).padStart(2, "0");
-  const month = String(now.getMonth() + 1).padStart(2, "0");
-  const year = now.getFullYear();
-
-  const hours = String(now.getHours()).padStart(2, "0");
-  const minutes = String(now.getMinutes()).padStart(2, "0");
-  const seconds = String(now.getSeconds()).padStart(2, "0");
-
-  // Simple plain text ticker
-  ticker.textContent = `${dayOfWeek}, ${day}/${month}/${year}, ${hours}:${minutes}:${seconds}`;
+// Build ticker text from all work items
+function buildTickerText() {
+  const workItems = document.querySelectorAll(".work-item");
+  let text = "";
+  workItems.forEach((item, i) => {
+    text += item.textContent.trim();
+    if (i < workItems.length - 1) {
+      text += " "; // spacing handled in CSS ::after
+    }
+  });
+  return text;
 }
 
-// Initial update immediately
-updateTicker();
+// Set initial ticker text
+ticker.textContent = buildTickerText();
 
-// Update every 1 second
-setInterval(updateTicker, 1000);
+// Optional: refresh ticker text every 10s in case work items change
+setInterval(() => {
+  ticker.textContent = buildTickerText();
+}, 10000);
 
 // ---------------------
 // IMAGE PREVIEWS
@@ -85,9 +82,7 @@ workItems.forEach(item => {
   });
 });
 
-// ---------------------
-// OPTIONAL: tap outside to close (mobile)
-// ---------------------
+// Tap outside to close preview on mobile
 document.addEventListener("click", e => {
   if (window.matchMedia("(hover: none)").matches) {
     if (activeItem && !e.target.classList.contains("work-item")) {
