@@ -18,44 +18,42 @@ function updateTicker() {
   ticker.textContent = `${dayOfWeek}, ${day}/${month}/${year}, ${hours}:${minutes}:${seconds}.${milliseconds} `;
 }
 
-// Update every 10ms for real-time milliseconds
 setInterval(updateTicker, 10);
+
 const workItems = document.querySelectorAll(".work-item");
 const previewContainer = document.getElementById("preview-container");
 
+function showPreview(item) {
+  previewContainer.innerHTML = "";
+
+  const images = item.dataset.img.split(",");
+
+  images.forEach(src => {
+    const img = document.createElement("img");
+    img.src = src.trim();
+    img.style.display = "inline-block";
+    previewContainer.appendChild(img);
+  });
+
+  previewContainer.style.display = "block";
+}
+
+function hidePreview() {
+  previewContainer.style.display = "none";
+  previewContainer.innerHTML = "";
+}
+
 workItems.forEach(item => {
   item.addEventListener("mouseenter", () => {
-    // clear previous images
-    previewContainer.innerHTML = "";
-
-    // split multiple images
-    const images = item.dataset.img.split(",");
-
-    images.forEach(src => {
-      const img = document.createElement("img");
-      img.src = src.trim();
-      img.style.display = "inline-block";  // allow multiple side by side
-      previewContainer.appendChild(img);
-    });
-
-    // show container
-    previewContainer.style.display = "block";
+    showPreview(item);
   });
 
   item.addEventListener("mouseleave", () => {
-    previewContainer.style.display = "none";
+    hidePreview();
   });
 
-  // optional click for mobile
+  // ✅ click now HIDES instead of shows
   item.addEventListener("click", () => {
-    previewContainer.innerHTML = "";
-    const images = item.dataset.img.split(",");
-    images.forEach(src => {
-      const img = document.createElement("img");
-      img.src = src.trim();
-      previewContainer.appendChild(img);
-    });
-    previewContainer.style.display = "block";
+    hidePreview();
   });
 });
-
