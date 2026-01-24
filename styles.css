@@ -24,20 +24,19 @@ html, body {
   line-height: 1.2;
   color: black;
   background: transparent;
-  overflow: hidden;      /* hide overflow for scrolling */
+  overflow: hidden;           /* hide overflow for scroll */
   white-space: nowrap;
   position: relative;
 }
 
 .ticker span {
   display: inline-block;
-  padding-left: 100%;             /* start off-screen */
-  animation: scroll-ticker 25s linear infinite; /* adjust speed here */
-  text-transform: none;
-  font-size: 18px;
+  padding-left: 100%;               /* start off-screen */
+  animation: scroll-ticker 20s linear infinite;
+  font-family: monospace;           /* makes time digits uniform */
 }
 
-/* Smooth continuous scroll (can tweak for longer ticker) */
+/* Smooth continuous scroll */
 @keyframes scroll-ticker {
   0% {
     transform: translateX(0);
@@ -78,22 +77,12 @@ ul.work-list, .work-list-inline {
 
 .work-list li, .work-item {
   display: inline-block;
-  margin-right: 0.2rem;    /* spacing before slashes */
+  margin-right: 0.3rem;   /* spacing between projects */
   font-size: 18px !important;
   line-height: 1.2 !important;
   color: black;
   cursor: pointer;
   position: relative;
-}
-
-/* Automatically add inline slashes */
-.work-list-inline .work-item::after {
-  content: " //";
-  margin-left: 0.25rem;
-}
-
-.work-list-inline .work-item:last-child::after {
-  content: "";
 }
 
 /* ---------------- Hover / Tap Preview Images ---------------- */
@@ -177,11 +166,11 @@ li {
   }
 
   .ticker span {
-    font-size: 16px;          /* slightly smaller on mobile */
-    animation-duration: 35s;  /* slower scroll for readability */
+    font-size: 16px;          /* smaller on mobile */
+    animation-duration: 30s;  /* slower scroll for readability */
   }
 
-  .work-list-inline .work-item::after {
-    margin-left: 0.15rem;     /* closer slashes on mobile */
+  .work-list-inline .work-item {
+    margin-right: 0.2rem;
   }
 }

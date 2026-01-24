@@ -1,30 +1,24 @@
 // ---------------------
-// TICKER (shows live time)
+// TICKER (live time with milliseconds)
 // ---------------------
 const ticker = document.getElementById("time");
 
 function updateTicker() {
   const now = new Date();
 
-  const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  const dayOfWeek = days[now.getDay()];
-
-  const day = String(now.getDate()).padStart(2, "0");
-  const month = String(now.getMonth() + 1).padStart(2, "0");
-  const year = now.getFullYear();
-
   const hours = String(now.getHours()).padStart(2, "0");
   const minutes = String(now.getMinutes()).padStart(2, "0");
   const seconds = String(now.getSeconds()).padStart(2, "0");
+  const millis = String(now.getMilliseconds()).padStart(3, "0");
 
-  ticker.textContent = `${dayOfWeek}, ${day}/${month}/${year}, ${hours}:${minutes}:${seconds}`;
+  ticker.textContent = `${hours}:${minutes}:${seconds}:${millis}`;
 }
 
-// Initial update immediately
-updateTicker();
+// Update very frequently for smooth milliseconds display
+setInterval(updateTicker, 10);
 
-// Update every second
-setInterval(updateTicker, 1000);
+// Initial update
+updateTicker();
 
 // ---------------------
 // IMAGE PREVIEWS
@@ -52,7 +46,7 @@ function hidePreview() {
   activeItem = null;
 }
 
-// Event handlers for desktop hover and mobile tap
+// DESKTOP hover and MOBILE tap
 workItems.forEach(item => {
   // DESKTOP hover
   item.addEventListener("mouseenter", () => {
@@ -71,13 +65,13 @@ workItems.forEach(item => {
   // MOBILE tap toggle
   item.addEventListener("click", e => {
     if (window.matchMedia("(hover: none)").matches) {
-      e.preventDefault(); // first tap prevents navigation for links
+      e.preventDefault(); // prevent navigation on first tap
 
       if (activeItem === item) {
-        hidePreview(); // second tap closes
+        hidePreview(); // close on second tap
       } else {
         activeItem = item;
-        showPreview(item); // first tap opens
+        showPreview(item); // open on first tap
       }
     }
   });
