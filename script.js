@@ -1,3 +1,4 @@
+// ----------------- Ticker -----------------
 const ticker = document.getElementById("time");
 
 function updateTicker() {
@@ -15,25 +16,39 @@ function updateTicker() {
   const seconds = String(now.getSeconds()).padStart(2, "0");
   const milliseconds = String(now.getMilliseconds()).padStart(3, "0");
 
-  ticker.textContent = `${dayOfWeek}, ${day}/${month}/${year}, ${hours}:${minutes}:${seconds}.${milliseconds} `;
+  // Red milliseconds
+  ticker.innerHTML = `${dayOfWeek}, ${day}/${month}/${year}, ${hours}:${minutes}:${seconds}.<span style="color:red">${milliseconds}</span>`;
 }
 
+// Update every 10ms
 setInterval(updateTicker, 10);
 
+
+// ----------------- Work Preview -----------------
 const workItems = document.querySelectorAll(".work-item");
 const previewContainer = document.getElementById("preview-container");
+
+// Create a close button
+let closeBtn = document.createElement("button");
+closeBtn.id = "close-preview";
+closeBtn.textContent = "×";
+closeBtn.addEventListener("click", () => {
+  previewContainer.style.display = "none";
+  previewContainer.innerHTML = "";
+});
+previewContainer.appendChild(closeBtn);
 
 let activeItem = null;
 
 function showPreview(item) {
   previewContainer.innerHTML = "";
+  previewContainer.appendChild(closeBtn); // re-add close button
 
   const images = item.dataset.img.split(",");
-
   images.forEach(src => {
     const img = document.createElement("img");
     img.src = src.trim();
-    img.style.display = "inline-block";
+    img.style.display = "inline-block"; // side by side
     previewContainer.appendChild(img);
   });
 
@@ -43,27 +58,28 @@ function showPreview(item) {
 function hidePreview() {
   previewContainer.style.display = "none";
   previewContainer.innerHTML = "";
+  previewContainer.appendChild(closeBtn); // keep close button
   activeItem = null;
 }
 
+// Event listeners
 workItems.forEach(item => {
-  // DESKTOP hover
+  // Desktop hover
   item.addEventListener("mouseenter", () => {
     if (window.matchMedia("(hover: hover)").matches) {
       showPreview(item);
     }
   });
-
   item.addEventListener("mouseleave", () => {
     if (window.matchMedia("(hover: hover)").matches) {
       hidePreview();
     }
   });
 
-  // MOBILE tap
+  // Mobile tap
   item.addEventListener("click", e => {
     if (window.matchMedia("(hover: none)").matches) {
-      e.preventDefault(); // stop immediate navigation
+      e.preventDefault();
 
       if (activeItem === item) {
         hidePreview();
