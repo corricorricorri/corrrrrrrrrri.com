@@ -1,3 +1,6 @@
+// ---------------------
+// TICKER
+// ---------------------
 const ticker = document.getElementById("time");
 
 function updateTicker() {
@@ -14,18 +17,24 @@ function updateTicker() {
   const minutes = String(now.getMinutes()).padStart(2, "0");
   const seconds = String(now.getSeconds()).padStart(2, "0");
 
-  // Remove milliseconds
+  // Simple plain text ticker
   ticker.textContent = `${dayOfWeek}, ${day}/${month}/${year}, ${hours}:${minutes}:${seconds}`;
 }
 
-setInterval(updateTicker, 1000); // update every 1s now, no need for 10ms
+// Initial update immediately
+updateTicker();
 
+// Update every 1 second
+setInterval(updateTicker, 1000);
+
+// ---------------------
+// IMAGE PREVIEWS
+// ---------------------
 const workItems = document.querySelectorAll(".work-item");
 const previewContainer = document.getElementById("preview-container");
 
 let activeItem = null;
 
-// Show the preview images
 function showPreview(item) {
   previewContainer.innerHTML = "";
   const images = item.dataset.img.split(",");
@@ -38,14 +47,13 @@ function showPreview(item) {
   previewContainer.style.display = "block";
 }
 
-// Hide the preview
 function hidePreview() {
   previewContainer.style.display = "none";
   previewContainer.innerHTML = "";
   activeItem = null;
 }
 
-// Main event handlers
+// Event handlers for desktop hover and mobile tap
 workItems.forEach(item => {
   // DESKTOP hover
   item.addEventListener("mouseenter", () => {
@@ -64,7 +72,9 @@ workItems.forEach(item => {
   // MOBILE tap toggle
   item.addEventListener("click", e => {
     if (window.matchMedia("(hover: none)").matches) {
-      e.preventDefault(); // stop navigation for first tap
+      e.preventDefault(); // first tap prevents navigation for links
+
+      // Toggle preview on mobile
       if (activeItem === item) {
         hidePreview(); // second tap closes
       } else {
@@ -73,4 +83,15 @@ workItems.forEach(item => {
       }
     }
   });
+});
+
+// ---------------------
+// OPTIONAL: tap outside to close (mobile)
+// ---------------------
+document.addEventListener("click", e => {
+  if (window.matchMedia("(hover: none)").matches) {
+    if (activeItem && !e.target.classList.contains("work-item")) {
+      hidePreview();
+    }
+  }
 });
