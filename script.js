@@ -1,28 +1,30 @@
 // ---------------------
-// TICKER
+// TICKER (shows live time)
 // ---------------------
 const ticker = document.getElementById("time");
 
-// Build ticker text from all work items
-function buildTickerText() {
-  const workItems = document.querySelectorAll(".work-item");
-  let text = "";
-  workItems.forEach((item, i) => {
-    text += item.textContent.trim();
-    if (i < workItems.length - 1) {
-      text += " "; // spacing handled in CSS ::after
-    }
-  });
-  return text;
+function updateTicker() {
+  const now = new Date();
+
+  const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const dayOfWeek = days[now.getDay()];
+
+  const day = String(now.getDate()).padStart(2, "0");
+  const month = String(now.getMonth() + 1).padStart(2, "0");
+  const year = now.getFullYear();
+
+  const hours = String(now.getHours()).padStart(2, "0");
+  const minutes = String(now.getMinutes()).padStart(2, "0");
+  const seconds = String(now.getSeconds()).padStart(2, "0");
+
+  ticker.textContent = `${dayOfWeek}, ${day}/${month}/${year}, ${hours}:${minutes}:${seconds}`;
 }
 
-// Set initial ticker text
-ticker.textContent = buildTickerText();
+// Initial update immediately
+updateTicker();
 
-// Optional: refresh ticker text every 10s in case work items change
-setInterval(() => {
-  ticker.textContent = buildTickerText();
-}, 10000);
+// Update every second
+setInterval(updateTicker, 1000);
 
 // ---------------------
 // IMAGE PREVIEWS
@@ -71,7 +73,6 @@ workItems.forEach(item => {
     if (window.matchMedia("(hover: none)").matches) {
       e.preventDefault(); // first tap prevents navigation for links
 
-      // Toggle preview on mobile
       if (activeItem === item) {
         hidePreview(); // second tap closes
       } else {
