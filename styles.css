@@ -33,7 +33,7 @@ html, body {
   display: inline-block;
   padding-left: 100%;               /* start off-screen */
   animation: scroll-ticker 20s linear infinite;
-  font-family: monospace;           /* makes time digits uniform */
+  font-family: monospace;           /* uniform digits for time */
 }
 
 /* Smooth continuous scroll */
@@ -77,12 +77,24 @@ ul.work-list, .work-list-inline {
 
 .work-list li, .work-item {
   display: inline-block;
-  margin-right: 0.3rem;   /* spacing between projects */
+  margin-right: 0.2rem;   /* tight spacing between projects */
   font-size: 18px !important;
   line-height: 1.2 !important;
   color: black;
   cursor: pointer;
   position: relative;
+}
+
+/* Add inline slashes automatically after each item except last */
+.work-list-inline .work-item::after {
+  content: " //";
+  margin-left: 0.1rem;   /* tight spacing after item */
+  font-weight: 300;
+  color: #000;           /* keep it same color or slightly gray if desired */
+}
+
+.work-list-inline .work-item:last-child::after {
+  content: "";           /* no slash after last item */
 }
 
 /* ---------------- Hover / Tap Preview Images ---------------- */
@@ -171,6 +183,10 @@ li {
   }
 
   .work-list-inline .work-item {
-    margin-right: 0.2rem;
+    margin-right: 0.1rem;     /* tighter spacing on mobile */
+  }
+
+  .work-list-inline .work-item::after {
+    margin-left: 0.05rem;     /* tighter slashes on mobile */
   }
 }
