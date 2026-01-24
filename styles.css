@@ -59,7 +59,7 @@ main.container {
 /* ---------------- Paragraphs ---------------- */
 p, .work-paragraph {
   font-size: 18px !important;
-  line-height: 1.3 !important;
+  line-height: 1.2 !important;
   margin-bottom: 1rem;
   text-align: left;
 }
@@ -78,7 +78,7 @@ ul.work-list, .work-list-inline {
 .work-list li, .work-item {
   display: inline;        /* treat like inline text for paragraph layout */
   font-size: 18px !important;
-  line-height: 1.3 !important;
+  line-height: 1.2 !important;
   color: black;
   cursor: pointer;
   position: relative;
