@@ -1,11 +1,11 @@
 // ---------------------
-// TICKER (Day + Date + Time with milliseconds, MM/DD/YYYY format)
+// TICKER (Day + Date + Time with milliseconds, MM/DD/YYYY format, scrolling)
 // ---------------------
-const ticker = document.getElementById("time");
+const ticker = document.querySelector("footer .ticker span");
 
-function updateTicker() {
+// Function to get formatted timestamp
+function getTimestamp() {
   const now = new Date();
-
   const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   const dayOfWeek = days[now.getDay()];
 
@@ -18,15 +18,25 @@ function updateTicker() {
   const seconds = String(now.getSeconds()).padStart(2, "0");
   const millis = String(now.getMilliseconds()).padStart(3, "0");
 
-  ticker.textContent = `${dayOfWeek}, ${month}/${day}/${year} ${hours}:${minutes}:${seconds}:${millis}`;
+  return `${dayOfWeek}, ${month}/${day}/${year} ${hours}:${minutes}:${seconds}:${millis}`;
 }
 
-// Update very frequently for smooth milliseconds display
-setInterval(updateTicker, 10);
+// Create multiple copies of timestamp to fill scrolling ticker
+function populateTicker() {
+  const content = [];
+  for (let i = 0; i < 10; i++) { // repeat 10 times
+    content.push(getTimestamp());
+  }
+  ticker.textContent = content.join("  •  "); // separate copies
+}
 
-// Initial update
-updateTicker();
+// Initial population
+populateTicker();
 
+// Update every 50ms to refresh milliseconds
+setInterval(() => {
+  populateTicker();
+}, 50);
 
 
 // ---------------------
