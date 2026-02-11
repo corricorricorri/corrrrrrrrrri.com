@@ -97,7 +97,7 @@ ul.work-list, .work-list-inline {
   content: "";
 }
 
-/* ---------------- Hover / Tap Preview Images ---------------- */
+/* Hover / Tap Preview Images */
 #preview-container {
   position: fixed;
   top: 0;
@@ -106,27 +106,27 @@ ul.work-list, .work-list-inline {
   height: 100vh;
   z-index: 9999;
   display: none;
-  pointer-events: auto;
-  background: transparent;
+  pointer-events: none; /* allow clicks through */
+  background: rgba(0,0,0,0.3); /* optional dim for visibility */
   text-align: center;
-  padding: 10px;
-  overflow: hidden; /* no scroll */
+  padding: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 #preview-container img {
-  width: 25vw !important;   /* force 25% of viewport width */
-  height: auto !important;  /* maintain aspect ratio */
-  max-height: 25vh !important; /* fit vertically */
-  margin: 10px auto !important;
-  display: block !important;
+  max-width: 90vw;  /* scale to viewport width */
+  max-height: 90vh; /* scale to viewport height */
+  width: auto;       /* keep original aspect ratio */
+  height: auto;      /* keep original aspect ratio */
+  margin: 10px 0;
+  border-radius: 6px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  display: block;
+  object-fit: contain; /* prevents squishing */
+  transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
-/* Mobile fallback */
-@media (max-width: 600px) {
-  #preview-container img {
-    width: 25vw !important;
-    max-height: 25vh !important;
-    height: auto !important;
-    margin: 10px auto !important;
-  }
-}

@@ -25,17 +25,14 @@ function showPreview(item) {
     const img = document.createElement("img");
     img.src = cleanSrc;
 
-    // Force size to 25vw x auto
-    img.style.width = "25vw";
-    img.style.height = "auto";
-    img.style.maxHeight = "25vh";
-    img.style.display = "block";
-    img.style.margin = "10px auto";
-
+    // REMOVE fixed 25vw sizing
+    // CSS will handle max-width and aspect ratio automatically
+    // Just let image display naturally
     previewContainer.appendChild(img);
   });
 
-  previewContainer.style.display = "block";
+  // Show container using flex (centered)
+  previewContainer.style.display = "flex";
 }
 
 
