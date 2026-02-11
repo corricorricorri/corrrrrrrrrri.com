@@ -100,107 +100,45 @@ ul.work-list, .work-list-inline {
 /* ---------------- Hover / Tap Preview Images ---------------- */
 #preview-container {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 9999;          /* bring above everything */
+  top: 0;
+  left: 0;
+  width: 100vw;            /* full screen width */
+  height: 100vh;           /* full screen height */
+  z-index: 9999;           /* bring above everything */
   display: none;           /* hidden by default */
   pointer-events: auto;
   background: transparent;
   text-align: center;
 
-  width: 80vw;             /* bigger bounding box */
-  height: 80vh;            /* enough height to scroll inside */
   padding: 10px;
-  overflow-y: auto;        /* vertical scroll inside box */
-  overflow-x: hidden;      /* no horizontal scroll */
+  overflow-y: auto;        /* scroll vertically if content too tall */
+  overflow-x: hidden;      /* prevent horizontal scroll */
   -webkit-overflow-scrolling: touch; /* smooth iOS scroll */
 }
 
 #preview-container img {
-  max-width: 100%;         /* fit within container width */
-  max-height: 70vh;        /* smaller than box to allow scrolling */
   width: auto;             /* maintain aspect ratio */
   height: auto;            /* maintain aspect ratio */
-  margin: 5px auto;        /* center images */
-  display: block;          /* stack images vertically */
+  max-width: 90%;          /* fit within container width */
+  margin: 10px auto;       /* center images with spacing */
+  display: block;          /* stack vertically */
 }
 
-/* ---------------- Links ---------------- */
-a {
-  color: #000;
-  text-decoration: none;
-  font-weight: inherit;
-}
-
-/* ---------------- Images ---------------- */
-.project-image {
-  width: 80%;
-  max-width: 600px;
-  height: auto;
-  display: block;
-  margin-bottom: 1rem;
-}
-
-/* ---------------- Lists ---------------- */
-li {
-  line-height: 1.2;
-}
-
-/* ---------------- Media Queries ---------------- */
+/* ---------------- Mobile Preview Images ---------------- */
 @media (max-width: 600px) {
-  main.container, 
-  .footer-content-wrapper, 
-  .footer-ticker {
-    width: 90vw;
-    margin-left: 5vw;
-  }
-
-  .footer-ticker span {
-    font-size: 16px;
-    animation-duration: 12s;
-  }
-
-  .work-list-inline .work-item::after {
-    margin-left: 0;
-  }
-
-  /* ---------------- Mobile Preview Images ---------------- */
   #preview-container {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    width: 90vw;
-    height: 60vh;          /* bigger bounding box than image */
+    width: 100vw;          /* full screen width on mobile */
+    height: 100vh;         /* full screen height */
     padding: 10px 0;
-
     overflow-y: auto;      /* vertical scroll inside box */
-    overflow-x: hidden;
-
-    -webkit-overflow-scrolling: touch; /* smooth iOS scroll */
-    display: none;         /* hidden by default */
-    background: transparent;
-    text-align: center;
-    pointer-events: auto;
-    z-index: 9999;
+    overflow-x: hidden;    
   }
 
   #preview-container img {
-    display: block;        /* stack images */
-    width: auto;           /* maintain aspect ratio */
     max-width: 90%;
-    max-height: 55vh;      /* smaller than box to allow scrolling */
+    width: auto;           /* maintain aspect ratio */
+    height: auto;          /* maintain aspect ratio */
     margin: 0 auto 10px auto;
-  }
-
-  #preview-container img:last-child {
-    margin-bottom: 0;
-  }
-
-  /* Optional: prevent body scrolling while preview is open */
-  body.preview-open {
-    overflow: hidden;
+    display: block;
   }
 }
