@@ -102,40 +102,31 @@ ul.work-list, .work-list-inline {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;            /* full screen width */
-  height: 100vh;           /* full screen height */
-  z-index: 9999;           /* bring above everything */
-  display: none;           /* hidden by default */
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  display: none;
   pointer-events: auto;
   background: transparent;
   text-align: center;
   padding: 10px;
-  overflow: hidden;        /* remove scrolling */
-  -webkit-overflow-scrolling: touch; /* smooth iOS scroll */
+  overflow: hidden; /* no scroll */
 }
 
 #preview-container img {
-  width: 25vw;             /* force 25% of viewport width */
-  height: auto;            /* maintain aspect ratio */
-  max-height: 25vh;        /* ensure it fits vertically */
-  margin: 10px auto;       /* center images with spacing */
-  display: block;          /* stack vertically */
+  width: 25vw !important;   /* force 25% of viewport width */
+  height: auto !important;  /* maintain aspect ratio */
+  max-height: 25vh !important; /* fit vertically */
+  margin: 10px auto !important;
+  display: block !important;
 }
 
-/* ---------------- Mobile Preview Images ---------------- */
+/* Mobile fallback */
 @media (max-width: 600px) {
-  #preview-container {
-    width: 100vw;
-    height: 100vh;
-    padding: 10px 0;
-    overflow: hidden;      /* remove scrolling */
-  }
-
   #preview-container img {
-    width: 25vw;           /* same 25% for mobile */
-    max-height: 25vh;      /* fit on screen */
-    height: auto;          
-    margin: 0 auto 10px auto;
-    display: block;
+    width: 25vw !important;
+    max-height: 25vh !important;
+    height: auto !important;
+    margin: 10px auto !important;
   }
 }

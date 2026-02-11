@@ -9,9 +9,6 @@ let activeItem = null;
 // Detect hover capability
 const canHover = window.matchMedia("(hover: hover)").matches;
 
-// ---------------------
-// SHOW PREVIEW
-// ---------------------
 function showPreview(item) {
   const data = item.getAttribute("data-img");
   if (!data) return; // skip if no images
@@ -23,15 +20,24 @@ function showPreview(item) {
 
   images.forEach(src => {
     const cleanSrc = src.trim();
-    if (!cleanSrc) return; // skip empty entries
+    if (!cleanSrc) return;
 
     const img = document.createElement("img");
     img.src = cleanSrc;
+
+    // Force size to 25vw x auto
+    img.style.width = "25vw";
+    img.style.height = "auto";
+    img.style.maxHeight = "25vh";
+    img.style.display = "block";
+    img.style.margin = "10px auto";
+
     previewContainer.appendChild(img);
   });
 
   previewContainer.style.display = "block";
 }
+
 
 // ---------------------
 // HIDE PREVIEW
