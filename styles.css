@@ -100,45 +100,64 @@ ul.work-list, .work-list-inline {
 /* ---------------- Hover / Tap Preview Images ---------------- */
 #preview-container {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;            /* full screen width */
-  height: 100vh;           /* full screen height */
-  z-index: 9999;           /* bring above everything */
-  display: none;           /* hidden by default */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;          
+  display: none;           
   pointer-events: auto;
   background: transparent;
   text-align: center;
 
+  width: 80vw;             
+  height: 80vh;            
   padding: 10px;
-  overflow-y: auto;        /* scroll vertically if content too tall */
-  overflow-x: hidden;      /* prevent horizontal scroll */
-  -webkit-overflow-scrolling: touch; /* smooth iOS scroll */
+  overflow-y: auto;        
+  overflow-x: hidden;      
+  -webkit-overflow-scrolling: touch; 
 }
 
 #preview-container img {
-  width: auto;             /* maintain aspect ratio */
-  height: auto;            /* maintain aspect ratio */
-  max-width: 90%;          /* fit within container width */
-  margin: 10px auto;       /* center images with spacing */
-  display: block;          /* stack vertically */
+  max-width: 50%;           /* restrict desktop image size */
+  max-height: 70vh;        
+  width: auto;             
+  height: auto;            
+  margin: 5px auto;        
+  display: block;          
 }
 
 /* ---------------- Mobile Preview Images ---------------- */
 @media (max-width: 600px) {
   #preview-container {
-    width: 100vw;          /* full screen width on mobile */
-    height: 100vh;         /* full screen height */
+    width: 90vw;
+    height: 60vh;          
     padding: 10px 0;
-    overflow-y: auto;      /* vertical scroll inside box */
-    overflow-x: hidden;    
+
+    overflow-y: auto;      
+    overflow-x: hidden;
+
+    -webkit-overflow-scrolling: touch; 
+    display: none;         
+    background: transparent;
+    text-align: center;
+    pointer-events: auto;
+    z-index: 9999;
   }
 
   #preview-container img {
-    max-width: 90%;
-    width: auto;           /* maintain aspect ratio */
-    height: auto;          /* maintain aspect ratio */
+    display: block;        
+    width: auto;           
+    max-width: 100%;        /* full width on mobile */
+    max-height: 55vh;      
     margin: 0 auto 10px auto;
-    display: block;
+  }
+
+  #preview-container img:last-child {
+    margin-bottom: 0;
+  }
+
+  body.preview-open {
+    overflow: hidden;
   }
 }
+
