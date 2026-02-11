@@ -97,46 +97,33 @@ ul.work-list, .work-list-inline {
   content: "";
 }
 
-
 /* ---------------- Hover / Tap Preview Images ---------------- */
 #preview-container {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 9999; /* bring above everything */
-  display: none; /* hidden by default */
+  z-index: 9999;          /* bring above everything */
+  display: none;           /* hidden by default */
   pointer-events: auto;
   background: transparent;
   text-align: center;
-  max-width: 95vw;
-  max-height: 95vh;
+
+  width: 80vw;             /* bigger bounding box */
+  height: 80vh;            /* enough height to scroll inside */
+  padding: 10px;
+  overflow-y: auto;        /* vertical scroll inside box */
+  overflow-x: hidden;      /* no horizontal scroll */
+  -webkit-overflow-scrolling: touch; /* smooth iOS scroll */
 }
 
 #preview-container img {
-  max-width: 300px;
-  max-height: 300px;
-  margin: 5px;
-  display: inline-block;
-  vertical-align: top;
-  box-shadow: none; /* shadow removed */
-}
-
-
-#close-preview {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  background: rgba(0,0,0,0.7);
-  color: white;
-  border: none;
-  font-size: 20px;
-  line-height: 20px;
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-  border-radius: 50%;
-  z-index: 10000;
+  max-width: 100%;         /* fit within container width */
+  max-height: 70vh;        /* smaller than box to allow scrolling */
+  width: auto;             /* maintain aspect ratio */
+  height: auto;            /* maintain aspect ratio */
+  margin: 5px auto;        /* center images */
+  display: block;          /* stack images vertically */
 }
 
 /* ---------------- Links ---------------- */
@@ -184,19 +171,16 @@ li {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    
+
     width: 90vw;
-    max-width: 90vw;
-    max-height: 45vh;        /* 👈 45% of viewport height */
-    
-    overflow-y: auto;        /* 👈 vertical scroll if image too tall */
-    overflow-x: hidden;
-    
+    height: 60vh;          /* bigger bounding box than image */
     padding: 10px 0;
-    
+
+    overflow-y: auto;      /* vertical scroll inside box */
+    overflow-x: hidden;
+
     -webkit-overflow-scrolling: touch; /* smooth iOS scroll */
-    
-    display: none;           /* hidden by default */
+    display: none;         /* hidden by default */
     background: transparent;
     text-align: center;
     pointer-events: auto;
@@ -204,10 +188,10 @@ li {
   }
 
   #preview-container img {
-    display: block;          /* stack images */
-    width: auto;             /* maintain aspect ratio */
-    max-width: 100%;
-    max-height: 45vh;        /* 👈 each image 45% of viewport height */
+    display: block;        /* stack images */
+    width: auto;           /* maintain aspect ratio */
+    max-width: 90%;
+    max-height: 55vh;      /* smaller than box to allow scrolling */
     margin: 0 auto 10px auto;
   }
 
