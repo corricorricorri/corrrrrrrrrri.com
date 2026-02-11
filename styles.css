@@ -178,8 +178,7 @@ li {
     margin-left: 0;
   }
 
-  /* ---------------- Mobile Preview Upgrade ---------------- */
-
+  /* ---------------- Mobile Preview Images ---------------- */
   #preview-container {
     position: fixed;
     top: 50%;
@@ -188,21 +187,27 @@ li {
     
     width: 90vw;
     max-width: 90vw;
+    max-height: 45vh;        /* 👈 45% of viewport height */
     
-    max-height: 50vh;        /* 👈 50% screen height */
-    overflow-y: auto;        /* 👈 vertical scroll */
+    overflow-y: auto;        /* 👈 vertical scroll if image too tall */
     overflow-x: hidden;
     
     padding: 10px 0;
     
     -webkit-overflow-scrolling: touch; /* smooth iOS scroll */
+    
+    display: none;           /* hidden by default */
+    background: transparent;
+    text-align: center;
+    pointer-events: auto;
+    z-index: 9999;
   }
 
   #preview-container img {
     display: block;          /* stack images */
-    width: 100%;
+    width: auto;             /* maintain aspect ratio */
     max-width: 100%;
-    height: auto;
+    max-height: 45vh;        /* 👈 each image 45% of viewport height */
     margin: 0 auto 10px auto;
   }
 
@@ -210,4 +215,8 @@ li {
     margin-bottom: 0;
   }
 
+  /* Optional: prevent body scrolling while preview is open */
+  body.preview-open {
+    overflow: hidden;
+  }
 }
