@@ -100,64 +100,42 @@ ul.work-list, .work-list-inline {
 /* ---------------- Hover / Tap Preview Images ---------------- */
 #preview-container {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 9999;          
-  display: none;           
+  top: 0;
+  left: 0;
+  width: 100vw;            /* full screen width */
+  height: 100vh;           /* full screen height */
+  z-index: 9999;           /* bring above everything */
+  display: none;           /* hidden by default */
   pointer-events: auto;
   background: transparent;
   text-align: center;
-
-  width: 80vw;             
-  height: 80vh;            
   padding: 10px;
-  overflow-y: auto;        
-  overflow-x: hidden;      
-  -webkit-overflow-scrolling: touch; 
+  overflow: hidden;        /* remove scrolling */
+  -webkit-overflow-scrolling: touch; /* smooth iOS scroll */
 }
 
 #preview-container img {
-  max-width: 50%;           /* restrict desktop image size */
-  max-height: 70vh;        
-  width: auto;             
-  height: auto;            
-  margin: 5px auto;        
-  display: block;          
+  width: 25vw;             /* force 25% of viewport width */
+  height: auto;            /* maintain aspect ratio */
+  max-height: 25vh;        /* ensure it fits vertically */
+  margin: 10px auto;       /* center images with spacing */
+  display: block;          /* stack vertically */
 }
 
 /* ---------------- Mobile Preview Images ---------------- */
 @media (max-width: 600px) {
   #preview-container {
-    width: 90vw;
-    height: 60vh;          
+    width: 100vw;
+    height: 100vh;
     padding: 10px 0;
-
-    overflow-y: auto;      
-    overflow-x: hidden;
-
-    -webkit-overflow-scrolling: touch; 
-    display: none;         
-    background: transparent;
-    text-align: center;
-    pointer-events: auto;
-    z-index: 9999;
+    overflow: hidden;      /* remove scrolling */
   }
 
   #preview-container img {
-    display: block;        
-    width: auto;           
-    max-width: 100%;        /* full width on mobile */
-    max-height: 55vh;      
+    width: 25vw;           /* same 25% for mobile */
+    max-height: 25vh;      /* fit on screen */
+    height: auto;          
     margin: 0 auto 10px auto;
-  }
-
-  #preview-container img:last-child {
-    margin-bottom: 0;
-  }
-
-  body.preview-open {
-    overflow: hidden;
+    display: block;
   }
 }
-
