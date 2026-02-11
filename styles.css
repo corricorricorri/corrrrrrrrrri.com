@@ -97,7 +97,7 @@ ul.work-list, .work-list-inline {
   content: "";
 }
 
-/* ---------------- Hover / Tap Preview Images ---------------- */
+
 /* ---------------- Hover / Tap Preview Images ---------------- */
 #preview-container {
   position: fixed;
@@ -178,8 +178,36 @@ li {
     margin-left: 0;
   }
 
-  #preview-container img {
-    max-width: 80vw;
-    max-height: 60vh;
+  /* ---------------- Mobile Preview Upgrade ---------------- */
+
+  #preview-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    width: 90vw;
+    max-width: 90vw;
+    
+    max-height: 50vh;        /* 👈 50% screen height */
+    overflow-y: auto;        /* 👈 vertical scroll */
+    overflow-x: hidden;
+    
+    padding: 10px 0;
+    
+    -webkit-overflow-scrolling: touch; /* smooth iOS scroll */
   }
+
+  #preview-container img {
+    display: block;          /* stack images */
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto 10px auto;
+  }
+
+  #preview-container img:last-child {
+    margin-bottom: 0;
+  }
+
 }
