@@ -6,22 +6,36 @@ const previewContainer = document.getElementById("preview-container");
 
 let activeItem = null;
 
+// Detect hover capability
+const canHover = window.matchMedia("(hover: hover)").matches;
+
+// ---------------------
+// SHOW PREVIEW
+// ---------------------
 function showPreview(item) {
-  // Remove old images
+  const data = item.getAttribute("data-img");
+  if (!data) return; // skip if no images
+
+  // Clear old images
   previewContainer.innerHTML = "";
 
-  if (!item.dataset.img) return; // skip if no images
+  const images = data.split(",");
 
-  const images = item.dataset.img.split(",");
   images.forEach(src => {
+    const cleanSrc = src.trim();
+    if (!cleanSrc) return; // skip empty entries
+
     const img = document.createElement("img");
-    img.src = src.trim();
-    img.style.display = "inline-block";
+    img.src = cleanSrc;
     previewContainer.appendChild(img);
   });
+
   previewContainer.style.display = "block";
 }
 
+// ---------------------
+// HIDE PREVIEW
+// ---------------------
 function hidePreview() {
   previewContainer.style.display = "none";
   previewContainer.innerHTML = "";
@@ -29,43 +43,48 @@ function hidePreview() {
 }
 
 // ---------------------
-// DESKTOP HOVER / MOBILE TAP
+// DESKTOP HOVER
 // ---------------------
-workItems.forEach(item => {
-  // DESKTOP hover
-  item.addEventListener("mouseenter", () => {
-    if (window.matchMedia("(hover: hover)").matches) {
+if (canHover) {
+  workItems.forEach(item => {
+    item.addEventListener("mouseenter", () => {
       showPreview(item);
-      activeItem = item;
-    }
-  });
+    });
 
-  item.addEventListener("mouseleave", () => {
-    if (window.matchMedia("(hover: hover)").matches) {
+    item.addEventListener("mouseleave", () => {
       hidePreview();
-    }
+    });
   });
+}
 
-  // MOBILE tap toggle
-  item.addEventListener("click", e => {
-    if (window.matchMedia("(hover: none)").matches) {
-      e.preventDefault(); // first tap prevents navigation
+// ---------------------
+// MOBILE TAP
+// ---------------------
+if (!canHover) {
+  workItems.forEach(item => {
+    item.addEventListener("click", e => {
+      const hasImages = item.getAttribute("data-img");
+      if (!hasImages) return;
+
+      e.preventDefault();
 
       if (activeItem === item) {
-        hidePreview(); // second tap closes
+        hidePreview();
       } else {
         activeItem = item;
-        showPreview(item); // first tap opens
+        showPreview(item);
       }
-    }
+    });
   });
-});
 
-// Tap outside to close preview on mobile
-document.addEventListener("click", e => {
-  if (window.matchMedia("(hover: none)").matches) {
-    if (activeItem && !e.target.classList.contains("work-item")) {
+  // Tap outside closes
+  document.addEventListener("click", e => {
+    if (
+      activeItem &&
+      !e.target.classList.contains("work-item") &&
+      !previewContainer.contains(e.target)
+    ) {
       hidePreview();
     }
-  }
-});
+  });
+}
