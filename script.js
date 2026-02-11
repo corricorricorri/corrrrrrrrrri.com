@@ -1,53 +1,33 @@
-// ---------------------
-// IMAGE PREVIEWS
-// ---------------------
 const workItems = document.querySelectorAll(".work-item");
 const previewContainer = document.getElementById("preview-container");
 
 let activeItem = null;
-
-// Detect hover capability
 const canHover = window.matchMedia("(hover: hover)").matches;
 
 function showPreview(item) {
   const data = item.getAttribute("data-img");
-  if (!data) return; // skip if no images
+  if (!data) return;
 
-  // Clear old images
   previewContainer.innerHTML = "";
 
   const images = data.split(",");
 
   images.forEach(src => {
-    const cleanSrc = src.trim();
-    if (!cleanSrc) return;
-
     const img = document.createElement("img");
-    img.src = cleanSrc;
-
-    // REMOVE fixed 25vw sizing
-    // CSS will handle max-width and aspect ratio automatically
-    // Just let image display naturally
+    img.src = src.trim();
     previewContainer.appendChild(img);
   });
 
-  // Show container using flex (centered)
-  previewContainer.style.display = "flex";
+  previewContainer.classList.add("active");
 }
 
-
-// ---------------------
-// HIDE PREVIEW
-// ---------------------
 function hidePreview() {
-  previewContainer.style.display = "none";
+  previewContainer.classList.remove("active");
   previewContainer.innerHTML = "";
   activeItem = null;
 }
 
-// ---------------------
-// DESKTOP HOVER
-// ---------------------
+/* ---------------- Desktop Hover ---------------- */
 if (canHover) {
   workItems.forEach(item => {
     item.addEventListener("mouseenter", () => {
@@ -60,32 +40,32 @@ if (canHover) {
   });
 }
 
-// ---------------------
-// MOBILE TAP
-// ---------------------
+/* ---------------- Mobile Tap (Toggle Behavior) ---------------- */
 if (!canHover) {
   workItems.forEach(item => {
     item.addEventListener("click", e => {
       const hasImages = item.getAttribute("data-img");
       if (!hasImages) return;
 
-      e.preventDefault();
+      e.stopPropagation();
 
+      // If tapping the same active item → close
       if (activeItem === item) {
         hidePreview();
-      } else {
-        activeItem = item;
-        showPreview(item);
+        return;
       }
+
+      // Otherwise open new item
+      activeItem = item;
+      showPreview(item);
     });
   });
 
-  // Tap outside closes
+  // Tap anywhere else closes
   document.addEventListener("click", e => {
     if (
       activeItem &&
-      !e.target.classList.contains("work-item") &&
-      !previewContainer.contains(e.target)
+      !e.target.closest(".work-item")
     ) {
       hidePreview();
     }

@@ -97,36 +97,89 @@ ul.work-list, .work-list-inline {
   content: "";
 }
 
-/* Hover / Tap Preview Images */
+/* ---------------- Hover / Tap Preview Images ---------------- */
 #preview-container {
   position: fixed;
   top: 0;
-  left: 0;
-  width: 100vw;
+  right: 0;
+  width: 72vw;
   height: 100vh;
-  z-index: 9999;
   display: none;
-  pointer-events: none; /* allow clicks through */
-  background: rgba(0,0,0,0.3); /* optional dim for visibility */
-  text-align: center;
-  padding: 20px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 4vh 4vw;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 5;
 }
 
+
+#preview-container.active {
+  display: flex;
+}
+
+/* Image sizing */
 #preview-container img {
-  max-width: 90vw;  /* scale to viewport width */
-  max-height: 90vh; /* scale to viewport height */
-  width: auto;       /* keep original aspect ratio */
-  height: auto;      /* keep original aspect ratio */
-  margin: 10px 0;
-  border-radius: 6px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  max-width: 25%;
+  max-height: 90vh;
+
+  width: auto;
+  height: auto;
+
+  object-fit: contain; /* prevents distortion */
   display: block;
-  object-fit: contain; /* prevents squishing */
-  transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
+/* Multiple image spacing */
+#preview-container img + img {
+  margin-top: 1vh;
+}
+@media (max-width: 900px) {
+  main.container,
+  .footer-content-wrapper {
+    width: 90%;
+    max-width: 700px;
+    padding-left: 5%;
+    padding-right: 5%;
+    margin-bottom: 0.5vh;   /* smaller spacing on mobile */
+  }
+
+  #preview-container {
+    width: 100vw;
+    height: 100vh;        /* full viewport height */
+    top: 0;               /* stick to top */
+    bottom: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  /* vertically center images */
+    align-items: center;      /* horizontally center images */
+    padding: 2vh 2vw;
+    overflow: auto;        /* allow scrolling if image is taller than viewport */
+  }
+
+  #preview-container img {
+    max-width: 60%;       /* slightly larger on mobile */
+    max-height: 65vh;     /* fit most of viewport */
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin-bottom: 1vh;   /* spacing between multiple images */
+  }
+}
+
+
+.footer-info a {
+  color: #000;
+  text-decoration: none;
+}
+
+.footer-info a:visited {
+  color: #000;
+}
+
+.footer-info a:hover {
+  text-decoration: underline; /* optional */
+}
