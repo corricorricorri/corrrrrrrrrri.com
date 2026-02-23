@@ -7,12 +7,19 @@
 
 /* ---------------- Body ---------------- */
 html, body {
-  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-  font-weight: 300;
-  font-size: 18px;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 400;
+  font-size: 15px;
   line-height: 1.2;
   color: #000;
   background-color: #fff;
+}
+
+/* ---------------- Titles ---------------- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 18px;
+  font-weight: 700;
 }
 
 /* ---------------- Main Container ---------------- */
@@ -27,7 +34,7 @@ main.container {
 
 /* ---------------- Paragraphs ---------------- */
 p, .work-paragraph {
-  font-size: 18px !important;
+  font-size: 15px !important;
   line-height: 1.2 !important;
   margin-bottom: 1rem;
   text-align: left;
@@ -42,7 +49,7 @@ ul.work-list, .work-list-inline {
 
 .work-list li, .work-item {
   display: inline;
-  font-size: 18px !important;
+  font-size: 15px !important;
   line-height: 1.2 !important;
   color: black;
   cursor: pointer;
@@ -52,7 +59,7 @@ ul.work-list, .work-list-inline {
 .work-list-inline .work-item::after {
   content: " //";
   margin-left: 0;
-  font-weight: 300;
+  font-weight: 400;
   color: #000;
 }
 
@@ -89,7 +96,7 @@ ul.work-list, .work-list-inline {
   height: auto;
   object-fit: contain;
   display: block;
-  margin-bottom: 1vh; /* spacing between images */
+  margin-bottom: 1vh;
 }
 
 /* ---------------- Mobile ---------------- */
@@ -126,6 +133,10 @@ ul.work-list, .work-list-inline {
   }
 }
 
+/* ---------------- Bold Utility ---------------- */
+.bold {
+  font-weight: 700;
+}
 /* Footer links */
 .footer-info a {
   color: #000;
@@ -134,4 +145,26 @@ ul.work-list, .work-list-inline {
 
 .footer-info a:hover {
   text-decoration: underline;
+
+}
+
+/* ---------------- Underline Utility ---------------- */
+.underline {
+  text-decoration: underline;
+  text-decoration-color: #000; /* black underline */
+  text-decoration-thickness: 1.5px; /* optional: makes it a bit sharper */
+}
+
+/* ---------------- Header Links ---------------- */
+main.container > p a {
+  color: #000;
+  text-decoration: underline;
+}
+
+main.container > p a:visited {
+  color: #000;
+}
+
+main.container > p a:hover {
+  color: #000;
 }

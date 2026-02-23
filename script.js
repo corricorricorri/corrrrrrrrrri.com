@@ -1,3 +1,4 @@
+// ---------------- Work Item Hover / Tap Preview ----------------
 const workItems = document.querySelectorAll(".work-item");
 const previewContainer = document.getElementById("preview-container");
 
@@ -8,10 +9,10 @@ function showPreview(item) {
   const data = item.getAttribute("data-img");
   if (!data) return;
 
+  // Clear previous previews
   previewContainer.innerHTML = "";
 
   const images = data.split(",");
-
   images.forEach(src => {
     const img = document.createElement("img");
     img.src = src.trim();
@@ -27,20 +28,15 @@ function hidePreview() {
   activeItem = null;
 }
 
-/* ---------------- Desktop Hover ---------------- */
+// ---------------- Desktop Hover ----------------
 if (canHover) {
   workItems.forEach(item => {
-    item.addEventListener("mouseenter", () => {
-      showPreview(item);
-    });
-
-    item.addEventListener("mouseleave", () => {
-      hidePreview();
-    });
+    item.addEventListener("mouseenter", () => showPreview(item));
+    item.addEventListener("mouseleave", hidePreview);
   });
 }
 
-/* ---------------- Mobile Tap (Toggle Behavior) ---------------- */
+// ---------------- Mobile Tap (Toggle Behavior) ----------------
 if (!canHover) {
   workItems.forEach(item => {
     item.addEventListener("click", e => {
@@ -49,25 +45,44 @@ if (!canHover) {
 
       e.stopPropagation();
 
-      // If tapping the same active item → close
       if (activeItem === item) {
         hidePreview();
         return;
       }
 
-      // Otherwise open new item
       activeItem = item;
       showPreview(item);
     });
   });
 
-  // Tap anywhere else closes
+  // Tap anywhere else closes preview
   document.addEventListener("click", e => {
-    if (
-      activeItem &&
-      !e.target.closest(".work-item")
-    ) {
+    if (activeItem && !e.target.closest(".work-item")) {
       hidePreview();
     }
   });
 }
+
+// ---------------- Live Date / Time Under CG ----------------
+function updateDateTime() {
+  const now = new Date();
+
+  const month = String(now.getMonth() + 1).padStart(2, "0");
+  const day = String(now.getDate()).padStart(2, "0");
+  const year = now.getFullYear();
+
+  const hours = String(now.getHours()).padStart(2, "0");
+  const minutes = String(now.getMinutes()).padStart(2, "0");
+  const seconds = String(now.getSeconds()).padStart(2, "0");
+  const milliseconds = String(now.getMilliseconds()).padStart(3, "0");
+
+  const dateEl = document.getElementById("date");
+  const timeEl = document.getElementById("time");
+
+  if (dateEl) dateEl.textContent = `${month}/${day}/${year}`;
+  if (timeEl) timeEl.textContent = `${hours}:${minutes}:${seconds}:${milliseconds}`;
+}
+
+// Update every 10ms for smooth milliseconds
+setInterval(updateDateTime, 10);
+updateDateTime();
