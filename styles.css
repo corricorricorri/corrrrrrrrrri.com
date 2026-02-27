@@ -50,26 +50,10 @@ p, .work-paragraph {
   text-align: left;
 }
 
-/* ---------------- Work List ---------------- */
-ul.work-list, .work-list-inline {
-  list-style: none;
-  padding-left: 0;
-  margin-bottom: 1rem;
-}
+/* ---------------- Work Paragraph Inline Style ---------------- */
 
-/* Make list items block-level for clean spacing */
-.work-list li, .work-item {
-  display: block;
-  font-size: 15px !important;
-  line-height: 1.2 !important;
-  color: black;
-  cursor: pointer;
-  position: relative;
-}
-
-/* Override for SELECTED WORK paragraph so it flows like a sentence */
 .work-paragraph .work-item {
-  display: inline;
+  display: inline !important;
 }
 
 .work-paragraph .work-item::after {
