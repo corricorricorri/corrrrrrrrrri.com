@@ -5,6 +5,17 @@
   box-sizing: border-box;
 }
 
+/* ---------------- Force Courier Prime Everywhere ---------------- */
+html, body, * {
+  font-family: "Courier Prime", Courier, monospace !important;
+}
+
+/* Ensure pseudo-elements inherit the font too */
+*::before,
+*::after {
+  font-family: "Courier Prime", Courier, monospace !important;
+}
+
 /* ---------------- Body ---------------- */
 html, body, main.container, p, span, a {
   font-family: "Courier Prime", Courier, monospace;
@@ -48,7 +59,7 @@ ul.work-list, .work-list-inline {
 
 /* Make list items block-level for clean spacing */
 .work-list li, .work-item {
-  display: block; /* was inline */
+  display: block;
   font-size: 15px !important;
   line-height: 1.2 !important;
   color: black;
@@ -56,20 +67,18 @@ ul.work-list, .work-list-inline {
   position: relative;
 }
 
-/* Inline style list with "//" separators */
+/* Inline style list — no separators */
 .work-list-inline .work-item {
   display: inline-block; /* inline but respects spacing */
 }
 
 .work-list-inline .work-item::after {
-  content: "";      /* no leading space */
-  margin-left: 0.2rem; /* controlled small gap */
-  font-weight: 00;
-  color: #000;
+  content: ""; /* ensures no added separators */
+  margin-left: 0.2rem;
 }
 
 .work-list-inline .work-item:last-child::after {
-  content: "";
+  content: ""; /* remove anything after the last item */
 }
 
 /* ---------------- Hover / Tap Preview Images ---------------- */
@@ -223,7 +232,4 @@ main.container > p a:hover {
   margin-top: 0.3rem;
   margin-bottom: 0.3;
 }
-/* -------- Hidden Blog Post -------- */
-.hidden {
-    display: none; /* completely hides the item */
-}
+
