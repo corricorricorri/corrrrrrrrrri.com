@@ -7,16 +7,16 @@
 
 /* ---------------- Body ---------------- */
 html, body, main.container, p, span, a {
-  font-family: "Courier New", Courier, monospace;
+  font-family: "Courier Prime", Courier, monospace;
   font-weight: 400;
   font-size: 15px;
-  line-height: 1.2;
+  line-height: 1.15;
   color: #000;
 }
 
 /* ---------------- Titles ---------------- */
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Courier New", Courier, monospace;
+  font-family: "Courier Prime", Courier, monospace;
   font-size: 18px;
   font-weight: 700;
 }
@@ -46,8 +46,9 @@ ul.work-list, .work-list-inline {
   margin-bottom: 1rem;
 }
 
+/* Make list items block-level for clean spacing */
 .work-list li, .work-item {
-  display: inline;
+  display: block; /* was inline */
   font-size: 15px !important;
   line-height: 1.2 !important;
   color: black;
@@ -55,10 +56,15 @@ ul.work-list, .work-list-inline {
   position: relative;
 }
 
+/* Inline style list with "//" separators */
+.work-list-inline .work-item {
+  display: inline-block; /* inline but respects spacing */
+}
+
 .work-list-inline .work-item::after {
-  content: " //";
-  margin-left: 0;
-  font-weight: 400;
+  content: "";      /* no leading space */
+  margin-left: 0.2rem; /* controlled small gap */
+  font-weight: 00;
   color: #000;
 }
 
@@ -136,6 +142,7 @@ ul.work-list, .work-list-inline {
 .bold {
   font-weight: 700;
 }
+
 /* Footer links */
 .footer-info a {
   color: #000;
@@ -144,7 +151,6 @@ ul.work-list, .work-list-inline {
 
 .footer-info a:hover {
   text-decoration: underline;
-
 }
 
 /* ---------------- Underline Utility ---------------- */
@@ -166,4 +172,58 @@ main.container > p a:visited {
 
 main.container > p a:hover {
   color: #000;
+}
+
+/* -------- Blog Post Layout -------- */
+
+.post-title {
+  display: block;
+  font-size: 18px;   /* larger title */
+  font-weight: 700;  /* bold */
+  margin-bottom: 0.4rem;
+}
+
+.post-summary {
+  display: block;
+  font-family: 'Courier Prime', Courier, monospace;
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+}
+.post-divider {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.post-body {
+  margin-bottom: 1rem;
+}
+
+.post-meta {
+  margin-top: 1rem;
+}
+
+/* Blog images */
+.post-image {
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.post-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Image caption */
+.post-caption {
+  display: block;
+  font-style: italic;
+  font-size: 12px;
+  margin-top: 0.3rem;
+  margin-bottom: 0.3;
+}
+/* -------- Hidden Blog Post -------- */
+.hidden {
+    display: none; /* completely hides the item */
 }
