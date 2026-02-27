@@ -67,6 +67,11 @@ ul.work-list, .work-list-inline {
   position: relative;
 }
 
+/* Override for SELECTED WORK paragraph so it flows like a sentence */
+.work-paragraph .work-item {
+  display: inline;
+}
+
 /* Inline style list — no separators */
 .work-list-inline .work-item {
   display: inline-block; /* inline but respects spacing */
