@@ -217,3 +217,8 @@ main.container > p a:hover {
   margin-bottom: 0.3;
 }
 
+.blog-links {
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+}
