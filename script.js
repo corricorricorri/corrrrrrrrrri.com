@@ -86,3 +86,44 @@ function updateDateTime() {
 // Update every 10ms for smooth milliseconds
 setInterval(updateDateTime, 10);
 updateDateTime();
+
+// Gallery Images 
+document.addEventListener("DOMContentLoaded", () => {
+  const galleryCover = document.getElementById("galleryCover");
+  const nextArrow = document.getElementById("nextArrow");
+
+  const images = [
+    "../images/team-1.JPG",
+    "../images/sign-2.JPG",
+    "../images/sign-1.JPG",
+    "../images/sign-3.JPG",
+    "../images/nikecraft-1.JPG",
+    "../images/ten-bullets-1.JPG",
+    "../images/tom-2.JPG",
+    "../images/tom-3.jpg",
+    "../images/run-1.JPG",
+    "../images/tom-4.jpg",
+   "../images/run-3.JPG",
+   "../images/runners-6.JPG",
+    "../images/tom-7.JPG",
+     "../images/runners-2.JPG",
+     "../images/runners-5.JPG",
+     "../images/books-4.JPG",
+      "../images/books-3.JPG",
+
+
+
+    
+    
+   
+   
+   
+  ];
+
+  let currentIndex = 0; // starting index
+
+  nextArrow.addEventListener("click", () => {
+    currentIndex = (currentIndex + 1) % images.length;
+    galleryCover.src = images[currentIndex];
+  });
+});

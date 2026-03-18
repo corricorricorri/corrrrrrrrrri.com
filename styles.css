@@ -222,3 +222,51 @@ main.container > p a:hover {
   padding-left: 0;
   margin-left: 0;
 }
+
+/* -------- Gallery Arrow -------- */
+
+.gallery-cover-container {
+  position: relative;
+}
+
+#galleryCover {
+  width: 100%;
+  display: block;
+  cursor: pointer;
+}
+
+/* Arrow indicator */
+.gallery-arrow {
+  position: absolute;
+  bottom: 8px;
+  right: 10px;
+  font-size: 18px;
+  font-weight: 700;
+  pointer-events: none;
+}
+
+/* Cover container & arrow */
+.gallery-container {
+  position: relative;
+  width: 100%;
+}
+
+#galleryCover {
+  width: 100%;
+  display: block;
+}
+
+
+.gallery-arrow {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-size: 24px;
+  font-weight: 700;
+  cursor: pointer;
+  user-select: none;
+  background: rgba(255,255,255,0.5);
+  padding: 4px 8px;
+  border-radius: 4px;
+  pointer-events: auto; /* ← needed to allow clicks */
+}
