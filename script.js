@@ -112,7 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "../images/books-3.JPG"
   ];
 
-  let currentIndex = 0; // starting index
+  let currentIndex = 0;
 
   function nextImage() {
     currentIndex = (currentIndex + 1) % images.length;
@@ -124,6 +124,17 @@ document.addEventListener("DOMContentLoaded", () => {
   galleryCover.addEventListener("click", nextImage);
 
   // Mobile touch support
-  nextArrow.addEventListener("touchstart", nextImage);
-  galleryCover.addEventListener("touchstart", nextImage);
+  nextArrow.addEventListener("touchend", e => { e.preventDefault(); nextImage(); });
+  galleryCover.addEventListener("touchend", e => { e.preventDefault(); nextImage(); });
+
+  // Optional: swipe left/right support for mobile
+  let startX = 0;
+  galleryCover.addEventListener("touchstart", e => {
+    startX = e.touches[0].clientX;
+  });
+  galleryCover.addEventListener("touchend", e => {
+    const endX = e.changedTouches[0].clientX;
+    if (endX < startX - 30) nextImage(); // swipe left = next
+    // you could implement prevImage if you want swipe right
+  });
 });
