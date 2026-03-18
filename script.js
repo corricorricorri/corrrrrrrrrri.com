@@ -87,7 +87,7 @@ function updateDateTime() {
 setInterval(updateDateTime, 10);
 updateDateTime();
 
-// Gallery Images 
+// ---------------- Gallery Images ----------------
 document.addEventListener("DOMContentLoaded", () => {
   const galleryCover = document.getElementById("galleryCover");
   const nextArrow = document.getElementById("nextArrow");
@@ -103,27 +103,27 @@ document.addEventListener("DOMContentLoaded", () => {
     "../images/tom-3.jpg",
     "../images/run-1.JPG",
     "../images/tom-4.jpg",
-   "../images/run-3.JPG",
-   "../images/runners-6.JPG",
+    "../images/run-3.JPG",
+    "../images/runners-6.JPG",
     "../images/tom-7.JPG",
-     "../images/runners-2.JPG",
-     "../images/runners-5.JPG",
-     "../images/books-4.JPG",
-      "../images/books-3.JPG",
-
-
-
-    
-    
-   
-   
-   
+    "../images/runners-2.JPG",
+    "../images/runners-5.JPG",
+    "../images/books-4.JPG",
+    "../images/books-3.JPG"
   ];
 
   let currentIndex = 0; // starting index
 
-  nextArrow.addEventListener("click", () => {
+  function nextImage() {
     currentIndex = (currentIndex + 1) % images.length;
     galleryCover.src = images[currentIndex];
-  });
+  }
+
+  // Desktop & mobile click
+  nextArrow.addEventListener("click", nextImage);
+  galleryCover.addEventListener("click", nextImage);
+
+  // Mobile touch support
+  nextArrow.addEventListener("touchstart", nextImage);
+  galleryCover.addEventListener("touchstart", nextImage);
 });
