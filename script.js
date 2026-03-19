@@ -93,23 +93,23 @@ document.addEventListener("DOMContentLoaded", () => {
   const nextArrow = document.getElementById("nextArrow");
 
   const images = [
-    "../images/team-1.JPG",
-    "../images/sign-2.JPG",
-    "../images/sign-1.JPG",
-    "../images/sign-3.JPG",
-    "../images/nikecraft-1.JPG",
-    "../images/ten-bullets-1.JPG",
-    "../images/tom-2.JPG",
-    "../images/tom-3.jpg",
-    "../images/run-1.JPG",
-    "../images/tom-4.jpg",
-    "../images/run-3.JPG",
-    "../images/runners-6.JPG",
-    "../images/tom-7.JPG",
-    "../images/runners-2.JPG",
-    "../images/runners-5.JPG",
-    "../images/books-4.JPG",
-    "../images/books-3.JPG"
+    "../images/team-1.webp",
+    "../images/sign-2.webp",
+    "../images/sign-1.webp",
+    "../images/sign-3.webp",
+    "../images/nikecraft-1.webp",
+    "../images/ten-bullets-1.webp",
+    "../images/tom-2.webp",
+    "../images/tom-3.webp",
+    "../images/run-1.webp",
+    "../images/tom-4.webp",
+    "../images/run-3.webp",
+    "../images/runners-6.webp",
+    "../images/tom-7.webp",
+    "../images/runners-2.webp",
+    "../images/runners-5.webp",
+    "../images/books-4.webp",
+    "../images/books-3.webp"
   ];
 
   let currentIndex = 0;
