@@ -67,9 +67,16 @@ a:hover { text-decoration: underline; text-underline-offset: 0.2em; }
   /* same visual size as the old CAD text: height scales with the screen */
   height: clamp(1.6rem, 4.2vw, 2.3rem);
   aspect-ratio: 43.5 / 15.71;
-  background-color: var(--accent);
-  -webkit-mask: url("/assets/logo-cad.svg") no-repeat left center / contain;
-  mask: url("/assets/logo-cad.svg") no-repeat left center / contain;
+}
+.wordmark svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  fill: var(--accent);
+  stroke: var(--accent);
+  stroke-width: 0.5px;
+  stroke-miterlimit: 10;
+  fill-rule: evenodd;
 }
 .wordmark:hover { text-decoration: none; }
 
