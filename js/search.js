@@ -31,9 +31,10 @@
     indexPromise = Promise.all([
       getDoc("/").catch(function () { return null; }),
       getDoc("/writing.html").catch(function () { return null; }),
-      getDoc("/about.html").catch(function () { return null; })
+      getDoc("/about.html").catch(function () { return null; }),
+      getDoc("/exhibitions.html").catch(function () { return null; })
     ]).then(function (docs) {
-      var blog = docs[0], writing = docs[1], about = docs[2];
+      var blog = docs[0], writing = docs[1], about = docs[2], exhibitions = docs[3];
       var items = [];
       var postFetches = [];
 
@@ -69,7 +70,22 @@
             url: a.getAttribute("href"),
             type: "Writing",
             date: textOf(art, ".outlet") || textOf(art, "time"),
-            text: textOf(art, ".entry-excerpt")
+            text: clean(textOf(art, ".outlet") + " " + textOf(art, ".entry-excerpt"))
+          });
+        });
+      }
+
+      if (exhibitions) {
+        exhibitions.querySelectorAll("article.entry").forEach(function (art) {
+          var heading = art.querySelector(".entry-title");
+          if (!heading) return;
+          var a = heading.querySelector("a");
+          items.push({
+            title: clean(heading.textContent),
+            url: a ? a.getAttribute("href") : "/exhibitions.html",
+            type: "Exhibition",
+            date: textOf(art, ".outlet") || textOf(art, "time"),
+            text: clean(textOf(art, ".outlet") + " " + textOf(art, ".entry-excerpt"))
           });
         });
       }
