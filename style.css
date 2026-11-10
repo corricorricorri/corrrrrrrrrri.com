@@ -413,3 +413,6 @@ hr.rule {
   .entry-title { font-size: 1.625rem; }
   .post-title { font-size: 1.625rem; }
 }
+
+/* Exhibitions is hidden from the nav for now. Delete this rule to show it again. */
+.site-nav a[href="/exhibitions.html"] { display: none; }
