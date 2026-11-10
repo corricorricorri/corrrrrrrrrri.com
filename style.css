@@ -407,8 +407,8 @@ hr.rule {
 .clock { font-variant-numeric: tabular-nums; }
 
 @media (max-width: 560px) {
-  .site-nav { gap: 0.4rem 0.8rem; font-size: 0.95rem; width: 100%; flex-wrap: wrap; }
-  .theme-toggle { margin-left: auto; font-size: 0.8rem; }
+  .site-nav { gap: 1.25rem; font-size: 1.05rem; width: 100%; }
+  .theme-toggle { margin-left: auto; }
   main { padding-top: 2.5rem; }
   .entry-title { font-size: 1.625rem; }
   .post-title { font-size: 1.625rem; }
