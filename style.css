@@ -300,6 +300,36 @@ hr.rule {
 .post-title { font-size: 2rem; color: var(--accent); }
 .post-subtitle { font-style: italic; margin: 0.5rem 0 0; color: var(--text); line-height: 1.6; }
 
+/* "Listen" reader (added by js/tts.js) */
+.tts {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1.5rem;
+  margin-top: 1.25rem;
+  font-size: 0.875rem;
+}
+.tts button {
+  font: inherit;
+  color: var(--accent);
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+.tts button:hover { text-decoration: underline; text-underline-offset: 0.2em; }
+.tts-speed { color: var(--text); }
+.tts select {
+  font: inherit;
+  color: var(--text);
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--rule);
+  border-radius: 0;
+  padding: 0 0.25rem;
+  cursor: pointer;
+}
+
 .post-body { margin-top: 2.5rem; line-height: 1.9; }
 .post-body p { margin: 0 0 1.25rem; }
 .post-body figure { margin-top: 2.5rem; margin-bottom: 2.5rem; }
