@@ -177,6 +177,7 @@ h1, h2, h3 {
   font-size: 2rem;
   line-height: 1.25;
 }
+.entry-title { color: var(--accent); }
 .entry-title a { color: var(--accent); }
 .entry-title a:hover { text-decoration: none; opacity: 0.8; }
 
@@ -406,8 +407,8 @@ hr.rule {
 .clock { font-variant-numeric: tabular-nums; }
 
 @media (max-width: 560px) {
-  .site-nav { gap: 1.25rem; font-size: 1.05rem; width: 100%; }
-  .theme-toggle { margin-left: auto; }
+  .site-nav { gap: 0.4rem 0.8rem; font-size: 0.95rem; width: 100%; flex-wrap: wrap; }
+  .theme-toggle { margin-left: auto; font-size: 0.8rem; }
   main { padding-top: 2.5rem; }
   .entry-title { font-size: 1.625rem; }
   .post-title { font-size: 1.625rem; }
