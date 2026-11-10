@@ -10,6 +10,9 @@
   var indexPromise = null;
 
   function clean(s) { return (s || "").replace(/\s+/g, " ").trim(); }
+  function fold(s) {
+    return (s || "").split("").map(function (c) { return c.normalize("NFD").charAt(0); }).join("");
+  }
   function escRe(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); }
 
   function getDoc(url) {
@@ -90,12 +93,12 @@
   }
 
   function termsOf(q) {
-    return clean(q).toLowerCase().split(" ").filter(Boolean);
+    return fold(clean(q).toLowerCase()).split(" ").filter(Boolean);
   }
 
   function score(item, terms) {
-    var title = item.title.toLowerCase();
-    var text = item.text.toLowerCase();
+    var title = fold(item.title.toLowerCase());
+    var text = fold(item.text.toLowerCase());
     var total = 0;
     for (var i = 0; i < terms.length; i++) {
       var t = terms[i];
@@ -112,7 +115,7 @@
   }
 
   function snippet(text, terms) {
-    var low = text.toLowerCase();
+    var low = fold(text.toLowerCase());
     var pos = -1;
     terms.forEach(function (t) {
       var p = low.indexOf(t);
@@ -128,16 +131,18 @@
 
   function appendHighlighted(el, text, terms) {
     if (!terms.length) { el.appendChild(document.createTextNode(text)); return; }
-    var re = new RegExp("(" + terms.map(escRe).join("|") + ")", "gi");
-    text.split(re).forEach(function (part, i) {
-      if (i % 2 === 1) {
-        var m = document.createElement("mark");
-        m.textContent = part;
-        el.appendChild(m);
-      } else if (part) {
-        el.appendChild(document.createTextNode(part));
-      }
-    });
+    var re = new RegExp(terms.map(escRe).join("|"), "gi");
+    var folded = fold(text);
+    var last = 0, m;
+    while ((m = re.exec(folded)) !== null) {
+      if (m[0].length === 0) { re.lastIndex++; continue; }
+      if (m.index > last) el.appendChild(document.createTextNode(text.slice(last, m.index)));
+      var mark = document.createElement("mark");
+      mark.textContent = text.slice(m.index, m.index + m[0].length);
+      el.appendChild(mark);
+      last = m.index + m[0].length;
+    }
+    if (last < text.length) el.appendChild(document.createTextNode(text.slice(last)));
   }
 
   function render(items, q) {

@@ -168,6 +168,10 @@
   // stop talking if the reader leaves the page
   window.addEventListener("pagehide", function () { runId++; synth.cancel(); });
 
+  // Only offer "Listen" when there is a real article to read (not a short summary page).
+  var bodyText = (body.innerText || body.textContent || "").replace(/\s+/g, " ").trim();
+  if (bodyText.length < 800) return;
+
   var anchor = article.querySelector(".post-subtitle") ||
                article.querySelector(".post-byline") ||
                article.querySelector(".post-title");
