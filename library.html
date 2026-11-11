@@ -26,9 +26,7 @@
   a { color: var(--accent); text-decoration: none; }
   a:hover { text-decoration: underline; text-underline-offset: 0.2em; }
   .site-header { width: 100%; padding: 1.5rem clamp(1.5rem, 5vw, 6rem) 0; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
-  .wordmark { display: block; height: clamp(1.6rem, 4.2vw, 2.3rem); aspect-ratio: 43.5 / 15.71; background-color: var(--accent);
-              -webkit-mask: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iSU1HIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0My41IDE1LjcxIj4KICA8ZGVmcz4KICAgIDxzdHlsZT4KICAgICAgLmNscy0xIHsKICAgICAgICBmaWxsOiAjMzNjOwogICAgICB9CiAgICA8L3N0eWxlPgogIDwvZGVmcz4KICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik05LjI5LDEwLjFoMi44djQuNDhjLS4zNi4yMS0uOTcuMzktMS44My41NC0uODkuMTUtMS42Ni4yMy0yLjI4LjIzLTIuMTYsMC0zLjktLjY1LTUuMjItMS45Ni0xLjMyLTEuMzItMS45OC0zLjEtMS45OC01LjM1cy42Ni00LjEyLDEuOTgtNS40NkM0LjA3LDEuMjIsNS44MS41NCw3Ljk4LjU0Yy42MSwwLDEuMzYuMDgsMi4yNi4yMy44OC4xNSwxLjQ5LjMzLDEuODUuNTR2NC40OGgtMi44di0yLjU2Yy0uMjUtLjA1LS41Ni0uMDctLjkzLS4wNy0xLjE0LDAtMi4wNS40My0yLjczLDEuMjktLjY4Ljg2LTEuMDEsMi4wNi0xLjAxLDMuNThzLjMzLDIuNjMsMSwzLjQ3Yy42Ni44MywxLjU2LDEuMjUsMi42OCwxLjI1LjQsMCwuNzMtLjAyLDEtLjA3di0yLjU4WiIvPgogIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTI4LjA5LDEyLjl2Mi4wNWgtNi44OXYtMi4wNWgxLjYxbC0uNjItMS45NmgtNC41bC0uNTUsMS45NmgxLjQ0djIuMDVoLTUuMjV2LTIuMDVoMS4xM0wxOC40MS45M2g0LjM5bDQuMDQsMTEuOTdoMS4yNVpNMTkuNzksMy41MmwtMS41Myw1LjM2aDMuMjZsLTEuNzMtNS4zNloiLz4KICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0yOS4yNSwyLjk5Vi45M2g2Ljk2YzIuMDksMCwzLjcuNjEsNC44MiwxLjgyLDEuMTMsMS4yMSwxLjY5LDIuOTUsMS42OSw1LjE5cy0uNTYsMy45OC0xLjY5LDUuMTljLTEuMTMsMS4yMS0yLjczLDEuODItNC44MiwxLjgyaC02Ljk2di0yLjA1aDEuMzJWMi45OWgtMS4zMlpNMzQuMywxMi42OGgxLjI2YzIuMjIsMCwzLjMyLTEuNTgsMy4zMi00Ljczcy0xLjExLTQuNzEtMy4zMi00LjcxaC0xLjI2djkuNDRaIi8+Cjwvc3ZnPg==") no-repeat left center / contain;
-              mask: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iSU1HIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0My41IDE1LjcxIj4KICA8ZGVmcz4KICAgIDxzdHlsZT4KICAgICAgLmNscy0xIHsKICAgICAgICBmaWxsOiAjMzNjOwogICAgICB9CiAgICA8L3N0eWxlPgogIDwvZGVmcz4KICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik05LjI5LDEwLjFoMi44djQuNDhjLS4zNi4yMS0uOTcuMzktMS44My41NC0uODkuMTUtMS42Ni4yMy0yLjI4LjIzLTIuMTYsMC0zLjktLjY1LTUuMjItMS45Ni0xLjMyLTEuMzItMS45OC0zLjEtMS45OC01LjM1cy42Ni00LjEyLDEuOTgtNS40NkM0LjA3LDEuMjIsNS44MS41NCw3Ljk4LjU0Yy42MSwwLDEuMzYuMDgsMi4yNi4yMy44OC4xNSwxLjQ5LjMzLDEuODUuNTR2NC40OGgtMi44di0yLjU2Yy0uMjUtLjA1LS41Ni0uMDctLjkzLS4wNy0xLjE0LDAtMi4wNS40My0yLjczLDEuMjktLjY4Ljg2LTEuMDEsMi4wNi0xLjAxLDMuNThzLjMzLDIuNjMsMSwzLjQ3Yy42Ni44MywxLjU2LDEuMjUsMi42OCwxLjI1LjQsMCwuNzMtLjAyLDEtLjA3di0yLjU4WiIvPgogIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTI4LjA5LDEyLjl2Mi4wNWgtNi44OXYtMi4wNWgxLjYxbC0uNjItMS45NmgtNC41bC0uNTUsMS45NmgxLjQ0djIuMDVoLTUuMjV2LTIuMDVoMS4xM0wxOC40MS45M2g0LjM5bDQuMDQsMTEuOTdoMS4yNVpNMTkuNzksMy41MmwtMS41Myw1LjM2aDMuMjZsLTEuNzMtNS4zNloiLz4KICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0yOS4yNSwyLjk5Vi45M2g2Ljk2YzIuMDksMCwzLjcuNjEsNC44MiwxLjgyLDEuMTMsMS4yMSwxLjY5LDIuOTUsMS42OSw1LjE5cy0uNTYsMy45OC0xLjY5LDUuMTljLTEuMTMsMS4yMS0yLjczLDEuODItNC44MiwxLjgyaC02Ljk2di0yLjA1aDEuMzJWMi45OWgtMS4zMlpNMzQuMywxMi42OGgxLjI2YzIuMjIsMCwzLjMyLTEuNTgsMy4zMi00Ljczcy0xLjExLTQuNzEtMy4zMi00LjcxaC0xLjI2djkuNDRaIi8+Cjwvc3ZnPg==") no-repeat left center / contain; }
+  .wordmark { display: block; height: clamp(1.6rem, 4.2vw, 2.3rem); aspect-ratio: 43.5 / 15.71; }
   .wordmark:hover { text-decoration: none; }
   .site-nav { display: flex; align-items: center; gap: 1.75rem; font-size: 1.15rem; font-weight: var(--weight); }
   .site-nav a { color: var(--text); }
@@ -55,6 +53,10 @@
 :root { --ok: #1f7a3d; --scrim: rgba(0,0,0,.45); --hover: #f5f5fd; }
 :root[data-theme="dark"] { --ok: #6fcf8f; --scrim: rgba(0,0,0,.7); --hover: #1a1a2c; }
 
+/* CAD wordmark: filled, with the same thin stroke the other pages use, whichever style.css version is loaded */
+.site-header .wordmark { background: none; -webkit-mask: none; mask: none; }
+.site-header .wordmark svg { display: block; width: 100%; height: 100%; fill: var(--accent, #3333cc); stroke: var(--accent, #3333cc);
+  stroke-width: 0.5px; stroke-miterlimit: 10; fill-rule: evenodd; }
 [hidden] { display: none !important; }
 button, input, select { font: inherit; color: inherit; }
 
@@ -98,21 +100,23 @@ ul.list { list-style: none; margin: 0; padding: 0; }
 .row .state.avail { color: var(--ok); }
 .empty { padding: 2.25rem 0; color: var(--muted); }
 
-/* covers grid + placeholders */
-.grid { list-style: none; margin: 0; padding: 1.25rem 0 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1.75rem 1.25rem; }
-.tile { display: block; width: 100%; text-align: left; background: none; border: 0; padding: 0; cursor: pointer; border-radius: 0; line-height: 1.45; }
-.tile .t-title { display: block; margin-top: .5rem; color: var(--accent); font-size: 1rem; line-height: 1.3; }
-.tile .t-by { display: block; font-size: .875rem; }
-.tile .t-state { display: block; font-size: .8125rem; color: var(--muted); }
+/* covers grid: every cover sits in a same-size cell, bottom-left aligned and shown at its own proportions
+   (never cropped), so books of different sizes still line up on a common baseline */
+.grid { list-style: none; margin: 0; padding: 1.25rem 0 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(112px, 1fr)); gap: 2rem 1.1rem; align-items: start; }
+.tile { display: block; width: 100%; text-align: left; background: none; border: 0; padding: 0; cursor: pointer; border-radius: 0; line-height: 1.4; }
+.tile .t-title { display: block; margin-top: .55rem; color: var(--accent); font-size: .9375rem; line-height: 1.3; }
+.tile .t-by { display: block; font-size: .8125rem; line-height: 1.35; margin-top: .1rem; }
+.tile .t-state { display: block; font-size: .8125rem; color: var(--muted); margin-top: .1rem; }
 .tile .t-state.avail { color: var(--ok); }
 .tile:hover .cover.ph { border-color: var(--accent); }
-.cover { aspect-ratio: 3 / 4; display: flex; align-items: center; justify-content: center; overflow: hidden; background: var(--rule); }
-.cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.cover.ph { background: transparent; border: 1px dashed var(--muted); color: var(--muted); font-size: .875rem; }
+.tile:hover .t-title { text-decoration: underline; text-underline-offset: .2em; }
+.cover { position: relative; display: block; aspect-ratio: 3 / 4; }
+.cover img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: left bottom; display: block; }
+.cover.ph { display: flex; align-items: center; justify-content: center; border: 1px dashed var(--muted); color: var(--muted); font-size: .875rem; }
 .thumbs { display: flex; gap: .5rem; margin-top: .5rem; flex-wrap: wrap; }
 .thumbs button { width: 46px; aspect-ratio: 3 / 4; padding: 0; border: 1px solid var(--rule); background: transparent; cursor: pointer; border-radius: 0; overflow: hidden; }
 .thumbs button[aria-current="true"] { border-color: var(--accent); }
-.thumbs img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.thumbs img { width: 100%; height: 100%; object-fit: contain; object-position: left bottom; display: block; }
 
 /* pop-up */
 #overlay { position: fixed; inset: 0; background: var(--scrim); display: none; align-items: center; justify-content: center; padding: 1.1rem; z-index: 20; }
@@ -154,7 +158,7 @@ dl.meta dd { margin: 0; }
 <body>
 
 <header class="site-header">
-  <a class="wordmark" href="/" aria-label="CAD, home"></a>
+  <a class="wordmark" href="/" aria-label="CAD, home"><svg viewBox="-0.5 -0.5 44.5 16.71" aria-hidden="true" focusable="false"><path d="M9.29,10.1h2.8v4.48c-.36.21-.97.39-1.83.54-.89.15-1.66.23-2.28.23-2.16,0-3.9-.65-5.22-1.96-1.32-1.32-1.98-3.1-1.98-5.35s.66-4.12,1.98-5.46C4.07,1.22,5.81.54,7.98.54c.61,0,1.36.08,2.26.23.88.15,1.49.33,1.85.54v4.48h-2.8v-2.56c-.25-.05-.56-.07-.93-.07-1.14,0-2.05.43-2.73,1.29-.68.86-1.01,2.06-1.01,3.58s.33,2.63,1,3.47c.66.83,1.56,1.25,2.68,1.25.4,0,.73-.02,1-.07v-2.58Z"/><path d="M28.09,12.9v2.05h-6.89v-2.05h1.61l-.62-1.96h-4.5l-.55,1.96h1.44v2.05h-5.25v-2.05h1.13L18.41.93h4.39l4.04,11.97h1.25ZM19.79,3.52l-1.53,5.36h3.26l-1.73-5.36Z"/><path d="M29.25,2.99V.93h6.96c2.09,0,3.7.61,4.82,1.82,1.13,1.21,1.69,2.95,1.69,5.19s-.56,3.98-1.69,5.19c-1.13,1.21-2.73,1.82-4.82,1.82h-6.96v-2.05h1.32V2.99h-1.32ZM34.3,12.68h1.26c2.22,0,3.32-1.58,3.32-4.73s-1.11-4.71-3.32-4.71h-1.26v9.44Z"/></svg></a>
   <nav class="site-nav" aria-label="Main">
     <a href="/">Blog</a>
     <a href="/writing.html">Writing</a>
@@ -216,6 +220,7 @@ dl.meta dd { margin: 0; }
           <option value="title">Title</option>
           <option value="by">Creator</option>
           <option value="year">Year</option>
+          <option value="new">Newest first</option>
         </select>
       </label>
       <input type="search" id="q" placeholder="Search title, creator, subject" aria-label="Search the library">
@@ -244,37 +249,23 @@ var PASSWORD_HASH = "1029866315154194";                  // see "Changing the pa
 
 /* ============================================================
    CATALOG
-   Edit this list. One object per item.
-   type:   "Book" or "Film"
-   status: "available" or "on loan"
-   image:  optional cover path like "images/library/001.jpg"
-   images: optional list of several pictures (cover first), e.g. ["images/library/001.jpg", "images/library/001-b.jpg"]
-           Leave both out and an outlined placeholder box shows instead.
-   Everything below is placeholder copy. Replace it with your own.
+   This list is generated from your spreadsheet (library.csv) by build_library.py.
+   Easiest way to change it: edit library.csv, then run the script. You can also edit it by hand.
+   Each item:  no, type ("Book" or "Film"), title, by, year, publisher, format, subject,
+               status ("available" or "on loan"), desc, runtime (films), image / images (cover photo paths).
+   With no image, an outlined placeholder box is shown.
 ============================================================ */
+/* CATALOG:START */
 var ITEMS = [
-  { no: "001", type: "Book", title: "Placeholder Title One", by: "Author Name", year: 2019, publisher: "Publisher", format: "Paperback", subject: "Photography",
-    status: "available", image: "",
-    desc: "Two or three sentences about the book and why it’s in the collection. Your own words work best here." },
-  { no: "002", type: "Book", title: "Placeholder Title Two", by: "Author Name", year: 2014, publisher: "Publisher", format: "Paperback", subject: "Architecture",
-    status: "on loan", image: "",
-    desc: "A short note on what the book covers and who it’s for." },
-  { no: "003", type: "Book", title: "Placeholder Title Three", by: "Artist Name", year: 2021, publisher: "Independent press", format: "Artist book", subject: "Art",
-    status: "available", image: "",
-    desc: "A short note on the work, the edition, or anything worth knowing before borrowing." },
-  { no: "004", type: "Book", title: "Placeholder Title Four", by: "Editor Name (ed.)", year: 2008, publisher: "Publisher", format: "Paperback", subject: "Design",
-    status: "available", image: "",
-    desc: "A short note on the book." },
-  { no: "005", type: "Film", title: "Placeholder Film One", by: "Director Name", year: 1998, publisher: "Distributor", format: "DVD", subject: "Documentary",
-    status: "available", image: "", runtime: "94 min",
-    desc: "A short note on the film and why it belongs in the library." },
-  { no: "006", type: "Film", title: "Placeholder Film Two", by: "Director Name", year: 2005, publisher: "Distributor", format: "Blu-ray", subject: "Independent cinema",
-    status: "on loan", image: "", runtime: "112 min",
-    desc: "A short note on the film." },
-  { no: "007", type: "Film", title: "Placeholder Film Three", by: "Artist Name", year: 2016, publisher: "Distributor", format: "DVD", subject: "Artist film",
-    status: "available", image: "", runtime: "58 min",
-    desc: "A short note on the film." }
+  {"no": "001", "type": "Book", "title": "Scorpio", "by": "Mike Slack", "publisher": "The Ice Plant", "format": "Hardcover", "subject": "Photography", "status": "available", "desc": "A book of Polaroid photographs tracing architecture, geology, and unfamiliar landscapes, transforming fragments of everyday life into an enigmatic journey through place, memory, and the surreal.", "year": 2006, "image": "images/library/001.jpg"},
+  {"no": "003", "type": "Book", "title": "Janni", "by": "Maurizio Fagiolo Dell'Arco", "publisher": "De Luca Editore", "format": "Paperback", "subject": "Italian Art", "status": "available", "desc": "An illustrated exploration of Italian painter Guglielmo Janni's life and artistic practice, offering a glimpse into his work and lasting place in 20th-century Italian art.", "year": 1986, "image": "images/library/003.jpg"},
+  {"no": "004", "type": "Book", "title": "Deluxe", "by": "Virginia Overton", "publisher": "The Power Station", "format": "Paperback", "subject": "Sculpture", "status": "available", "desc": "A look at Virginia Overton’s sculptural practice, transforming everyday materials into striking installations.", "year": 2012, "image": "images/library/004.jpg"},
+  {"no": "005", "type": "Book", "title": "Anthology of Time-Based Works", "by": "Willie Doherty", "publisher": "Hatje Cantz", "format": "Paperback", "subject": "Video Art", "status": "available", "desc": "An overview of Willie Doherty’s photography, video, and sound works, exploring memory, conflict, and the blurred line between documentary and fiction.", "year": 2007, "image": "images/library/005.jpg"},
+  {"no": "008", "type": "Book", "title": "Susan Hiller", "by": "Ann Gallagher", "publisher": "Tate", "format": "Paperback", "subject": "Conceptual Art", "status": "available", "desc": "A comprehensive survey of Susan Hiller’s work, exploring overlooked aspects of culture, memory, dreams, and the paranormal through diverse artistic media.", "year": 2010, "image": "images/library/008.jpg"},
+  {"no": "009", "type": "Book", "title": "Donald Judd Interviews", "by": "Flavin Judd and Caitlin Murray", "publisher": "Judd Foundation and David Zwirner", "format": "Paperback", "subject": "Interviews", "status": "available", "desc": "A collection of interviews spanning four decades, offering insight into Donald Judd’s artistic practice, ideas, and perspectives on art and culture.", "year": 2019, "image": "images/library/009.jpg"},
+  {"no": "010", "type": "Book", "title": "Dirk Skreber: Blood Speed", "by": "Dirk Skreber", "publisher": "König, Walther,", "format": "Paperback", "subject": "Conceptual Art", "status": "available", "desc": "An overview of Dirk Skreber’s paintings and installations, exploring disaster, destruction, and the unsettling transformation of everyday scenes.", "year": 2011, "image": "images/library/010.jpg"}
 ];
+/* CATALOG:END */
 
 /* ============================================================
    PASSWORD GATE
@@ -335,13 +326,17 @@ function esc(s) {
   });
 }
 
+function fold(s) {  // lower-case and ignore accents, so "stanescu" finds "Stănescu"
+  return String(s == null ? "" : s).normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+}
+
 function visibleItems() {
-  var q = state.q.toLowerCase();
+  var q = fold(state.q).trim();
   var out = ITEMS.filter(function (it) {
     if (state.type !== "All" && it.type !== state.type) return false;
     if (state.avail && it.status !== "available") return false;
     if (q) {
-      var hay = [it.title, it.by, it.subject, it.publisher, it.year].join(" ").toLowerCase();
+      var hay = fold([it.title, it.by, it.subject, it.publisher, it.format, it.year].join(" "));
       if (hay.indexOf(q) === -1) return false;
     }
     return true;
@@ -349,6 +344,7 @@ function visibleItems() {
   out.sort(function (a, b) {
     var k = state.sort;
     if (k === "year") return (b.year || 0) - (a.year || 0);
+    if (k === "new") return String(b.no).localeCompare(String(a.no), undefined, { numeric: true });
     return String(a[k]).localeCompare(String(b[k]), undefined, { numeric: true });
   });
   return out;
@@ -432,6 +428,7 @@ function openItem(no, trigger) {
   var meta = [["Format", it.format], ["Year", it.year], [it.type === "Film" ? "Distributor" : "Publisher", it.publisher], ["Subject", it.subject]];
   if (it.runtime) meta.push(["Runtime", it.runtime]);
   meta.push(["Loan period", loan]);
+  meta = meta.filter(function (m) { return m[1] !== undefined && m[1] !== null && m[1] !== ""; });
 
   pop.innerHTML =
     '<div class="pop-head"><div><h2 id="pop-title">' + esc(it.title) + '</h2><p class="by">' + esc(it.by) + '</p></div>' +
@@ -439,7 +436,7 @@ function openItem(no, trigger) {
     '<div class="pop-body">' +
       '<div><div id="pop-cover">' + coverHTML(it, 0) + '</div><div class="thumbs" id="pop-thumbs"></div></div>' +
       '<div>' +
-        '<p class="desc">' + esc(it.desc) + '</p>' +
+        (it.desc ? '<p class="desc">' + esc(it.desc) + '</p>' : '') +
         '<dl class="meta">' + meta.map(function (m) { return '<dt>' + esc(m[0]) + '</dt><dd>' + esc(m[1]) + '</dd>'; }).join("") + '</dl>' +
         (avail
           ? '<form class="request" id="req">' +
